@@ -23,61 +23,86 @@
         CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES
       </h1>
       <!-- searchBar -->
-      <div></div>
+      <div class="search-bar-container">
+        <input
+          type="text"
+          id="search-bar"
+          name="search-bar"
+          minlength="3"
+          aria-label="Barre de recherche"
+          placeholder="Rechercher une recette, un ingrédient, ..." />
+        <div aria-label="Rechercher" role="button" class="google-container">
+          <img
+            class="google-container__icon"
+            aria-hidden="true"
+            alt=""
+            src="assets/icons/google-white.svg" />
+        </div>
+        <img
+          class="close-icon"
+          aria-hidden="true"
+          src="assets/icons/close-grey.svg"
+          alt="Effacer"
+          role="button" />
+      </div>
     </header>
     <main>
-      <!-- section avec tout ce qui concerne les recherches -->
-      <section class="search-section">
-        <!-- Ligne des choix -->
-        <div class="search-section__choices-line">
-          <div class="search-section__choices-line__accordions-container">
-            <div
-              role="menuitemcheckbox"
-              aria-expanded="false"
-              class="search-section__choices-line__accordions-container__ingredients">
-              <button
-                aria-label="Ingrédients"
-                role="button"
-                aria-haspopup
-                id="ingredients-collapse">
-                <span class="collapse__title">Ingrédients</span>
-                <span class="collapse__icon" aria-hidden="true"></span>
-              </button>
+      <div class="main-container">
+        <!-- section avec tout ce qui concerne les recherches -->
+        <section class="search-section">
+          <!-- Ligne des choix -->
+          <div class="search-section__choices-line">
+            <div class="search-section__choices-line__accordions-container">
+              <div
+                role="menuitemcheckbox"
+                aria-expanded="false"
+                class="search-section__choices-line__accordions-container__ingredients">
+                <button
+                  aria-label="Ingrédients"
+                  role="button"
+                  aria-haspopup
+                  id="ingredients-collapse">
+                  <span class="collapse__title">Ingrédients</span>
+                  <span class="collapse__icon" aria-hidden="true"></span>
+                </button>
+              </div>
+              <div
+                role="menuitemcheckbox"
+                aria-expanded="false"
+                class="search-section__choices-line__accordions-container__utensils">
+                <button
+                  aria-label="Appareils"
+                  role="button"
+                  aria-haspopup
+                  id="appliances-collapse">
+                  <span class="collapse__title">Appareils</span>
+                  <span class="collapse__icon" aria-hidden="true"></span>
+                </button>
+              </div>
+              <div
+                role="menuitemcheckbox"
+                aria-expanded="false"
+                class="search-section__choices-line__accordions-container__appliances">
+                <button
+                  aria-label="ustensiles"
+                  role="button"
+                  aria-haspopup
+                  id="utensils-collapse">
+                  <span class="collapse__title">Ustensiles</span>
+                  <span class="collapse__icon" aria-hidden="true"></span>
+                </button>
+              </div>
             </div>
-            <div
-              role="menuitemcheckbox"
-              aria-expanded="false"
-              class="search-section__choices-line__accordions-container__utensils">
-              <button
-                aria-label="Appareils"
-                role="button"
-                aria-haspopup
-                id="appliances-collapse">
-                <span class="collapse__title">Appareils</span>
-                <span class="collapse__icon" aria-hidden="true"></span>
-              </button>
-            </div>
-            <div
-              role="menuitemcheckbox"
-              aria-expanded="false"
-              class="search-section__choices-line__accordions-container__appliances">
-              <button
-                aria-label="ustensiles"
-                role="button"
-                aria-haspopup
-                id="utensils-collapse">
-                <span class="collapse__title">Ustensiles</span>
-                <span class="collapse__icon" aria-hidden="true"></span>
-              </button>
-            </div>
+            <p class="search-section__choices-line__recipes-counter">
+              1500 recettes
+            </p>
           </div>
-          <div class="search-section__choices-line__recipes-counter"></div>
-        </div>
-        <!-- Ligne des items sélectionnés -->
-        <div class="search-section__selected-items-line"></div>
-      </section>
-      <!-- section d'affichage des recettes -->
-      <section class="recipes-section"></section>
+          <!-- Ligne des items sélectionnés -->
+          <div class="search-section__selected-items-line"></div>
+        </section>
+        <!-- section d'affichage des recettes -->
+        <section class="recipes-section"></section>
+      </div>
     </main>
     <script src="scripts/templates/recipeCard.js"></script>
     <script src="scripts/api/api.js"></script>
