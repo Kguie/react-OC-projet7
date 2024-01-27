@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/icons/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;700&display=swap"
+      rel="stylesheet" />
+    <title>Les petits plats</title>
+  </head>
+  <body>
+    <header>
+      <!-- logo -->
+      <img
+        src="assets/icons/full-logo.svg"
+        alt="Logo Les petits plats"
+        class="logo" />
+      <!-- title  -->
+      <h1>
+        CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES
+      </h1>
+      <!-- searchBar -->
+      <div></div>
+    </header>
+    <main>
+      <!-- section avec tout ce qui concerne les recherches -->
+      <section class="search-section">
+        <!-- Ligne des choix -->
+        <div class="search-section__choices-line">
+          <div class="search-section__choices-line__accordions-container">
+            <div
+              role="menuitemcheckbox"
+              aria-expanded="false"
+              class="search-section__choices-line__accordions-container__ingredients">
+              <button
+                aria-label="Ingrédients"
+                role="button"
+                aria-haspopup
+                id="ingredients-collapse">
+                <span class="collapse__title">Ingrédients</span>
+                <span class="collapse__icon" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div
+              role="menuitemcheckbox"
+              aria-expanded="false"
+              class="search-section__choices-line__accordions-container__utensils">
+              <button
+                aria-label="Appareils"
+                role="button"
+                aria-haspopup
+                id="appliances-collapse">
+                <span class="collapse__title">Appareils</span>
+                <span class="collapse__icon" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div
+              role="menuitemcheckbox"
+              aria-expanded="false"
+              class="search-section__choices-line__accordions-container__appliances">
+              <button
+                aria-label="ustensiles"
+                role="button"
+                aria-haspopup
+                id="utensils-collapse">
+                <span class="collapse__title">Ustensiles</span>
+                <span class="collapse__icon" aria-hidden="true"></span>
+              </button>
+            </div>
+          </div>
+          <div class="search-section__choices-line__recipes-counter"></div>
+        </div>
+        <!-- Ligne des items sélectionnés -->
+        <div class="search-section__selected-items-line"></div>
+      </section>
+      <!-- section d'affichage des recettes -->
+      <section class="recipes-section"></section>
+    </main>
+    <script src="scripts/templates/recipeCard.js"></script>
+    <script src="scripts/api/api.js"></script>
+    <script src="scripts/pages/index.js"></script>
+  </body>
+</html>
