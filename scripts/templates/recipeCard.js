@@ -9,7 +9,7 @@ function getRecipeCardDom(recipe) {
   const $description = document.createElement("div");
   const $ingredients = document.createElement("div");
   const $ingredientsTitle = document.createElement("p");
-  const $listContainer = document.createElement("div");
+  const $listContainer = document.createElement("ul");
 
   $recipeCard.classList.add("recipe-card");
   $imgSection.classList.add("recipe-card__img-container");
@@ -19,9 +19,15 @@ function getRecipeCardDom(recipe) {
   $ingredientsTitle.classList.add("recipe-card__body__title");
   $listContainer.classList.add("recipe-card__body__ingredients__list");
 
-  $imgSection.innerHTML = `<img alt="recette n° ${recipe.id}" class="recipe-card__img-container__img" src="assets/photos/${recipe.image}"/>
-  <div class="recipe-card__timer-container>
-      <p aria-label="temps de préparation" class="recipe-card__timer-container__timer>${recipe.time}min</p>
+  $imgSection.innerHTML = `<img alt="recette n° ${
+    recipe.id
+  }" class="recipe-card__img-container__img" src="assets/${
+    recipe.image ? "photos/" + recipe.image : "default.png"
+  }"/>
+  <div class="recipe-card__timer-container">
+      <p aria-label="temps de préparation" class="recipe-card__timer-container__timer">${
+        recipe.time
+      }min</p>
   </div>`;
   $title.textContent = recipe.name;
   $description.innerHTML = `<p class="recipe-card__body__title">RECETTE</p>
@@ -45,12 +51,12 @@ function getRecipeCardDom(recipe) {
  */
 function setDOMIngredientsList(ingredientsNode, ingredientsList) {
   ingredientsList.forEach((ingredient) => {
-    const $ingredient = document.createElement("div");
+    const $ingredient = document.createElement("li");
     $ingredient.classList.add("ingredient");
-    ingredient.innerHTML = `<p class="ingredient__title">${
+    $ingredient.innerHTML = `<p class="ingredient__title">${
       ingredient.ingredient
     }</p>
-    <p class="ingredient__content">${ingredient.quantity}${
+    <p class="ingredient__content">${ingredient.quantity || ""}${
       ingredient.unit || ""
     }</p>
     `;

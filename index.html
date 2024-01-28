@@ -54,43 +54,125 @@
           <div class="search-section__choices-line">
             <div class="search-section__choices-line__accordions-container">
               <div
-                role="menuitemcheckbox"
+                role="combobox"
+                id="ingredients-collapse"
                 aria-expanded="false"
                 class="search-section__choices-line__accordions-container__ingredients">
-                <button
-                  aria-label="Ingrédients"
-                  role="button"
-                  aria-haspopup
-                  id="ingredients-collapse">
+                <button aria-label="Ingrédients" role="button" aria-haspopup>
                   <span class="collapse__title">Ingrédients</span>
                   <span class="collapse__icon" aria-hidden="true"></span>
                 </button>
+                <div
+                  class="collapse__container"
+                  id="ingredients-collapse-list"
+                  aria-hidden="true">
+                  <div class="search-bar-container">
+                    <input
+                      type="text"
+                      id="ingredients-search-bar"
+                      name="ingredients-search-bar"
+                      minlength="3"
+                      aria-label="Barre de recherche d'ingrédients" />
+                    <img
+                      class="google-collapse"
+                      aria-hidden="true"
+                      alt="Rechercher un ingrédient"
+                      src="assets/icons/google-grey.svg" />
+                    <img
+                      class="erase-collapse"
+                      aria-hidden="true"
+                      src="assets/icons/close-grey.svg"
+                      alt="Effacer"
+                      role="button" />
+                  </div>
+                  <ul
+                    aria-label="Ingrédients sélectionnés"
+                    class="collapse__container__chosen-items"></ul>
+                  <ul
+                    aria-label="Sélectionner un ingrédients"
+                    class="collapse__container__choices"></ul>
+                </div>
               </div>
               <div
-                role="menuitemcheckbox"
+                role="combobox"
+                id="appliances-collapse"
                 aria-expanded="false"
                 class="search-section__choices-line__accordions-container__utensils">
-                <button
-                  aria-label="Appareils"
-                  role="button"
-                  aria-haspopup
-                  id="appliances-collapse">
+                <button aria-label="Appareils" role="button" aria-haspopup>
                   <span class="collapse__title">Appareils</span>
                   <span class="collapse__icon" aria-hidden="true"></span>
                 </button>
+                <div
+                  class="collapse__container"
+                  id="appliances-collapse-list"
+                  aria-hidden="true">
+                  <div class="search-bar-container">
+                    <input
+                      type="text"
+                      id="appliances-search-bar"
+                      name="appliances-search-bar"
+                      minlength="3"
+                      aria-label="Barre de recherche d'appareil" />
+
+                    <img
+                      class="google-collapse"
+                      aria-hidden="true"
+                      alt="Rechercher un appareil"
+                      src="assets/icons/google-grey.svg" />
+
+                    <img
+                      class="erase-collapse"
+                      aria-hidden="true"
+                      src="assets/icons/close-grey.svg"
+                      alt="Effacer"
+                      role="button" />
+                  </div>
+                  <ul
+                    aria-label="Appareils sélectionnés"
+                    class="collapse__container__chosen-items"></ul>
+                  <ul
+                    aria-label="Sélectionner un appareil"
+                    class="collapse__container__choices"></ul>
+                </div>
               </div>
               <div
-                role="menuitemcheckbox"
+                role="combobox"
+                id="utensils-collapse"
                 aria-expanded="false"
                 class="search-section__choices-line__accordions-container__appliances">
-                <button
-                  aria-label="ustensiles"
-                  role="button"
-                  aria-haspopup
-                  id="utensils-collapse">
+                <button aria-label="ustensiles" role="button" aria-haspopup>
                   <span class="collapse__title">Ustensiles</span>
                   <span class="collapse__icon" aria-hidden="true"></span>
                 </button>
+                <div
+                  class="collapse__container"
+                  id="ustensils-collapse-list"
+                  aria-hidden="true">
+                  <div class="search-bar-container">
+                    <input
+                      type="text"
+                      id="utensils-search-bar"
+                      name="utensils-search-bar"
+                      minlength="3"
+                      aria-label="Barre de recherche d'ustensile" />
+                    <img
+                      class="google-collapse"
+                      alt="Rechercher un ustensile"
+                      src="assets/icons/google-grey.svg" />
+                    <img
+                      class="erase-collapse"
+                      aria-hidden="true"
+                      src="assets/icons/close-grey.svg"
+                      alt="Effacer"
+                      role="button" />
+                  </div>
+                  <ul
+                    aria-label="Ustensiles sélectionnés"
+                    class="collapse__container__chosen-items"></ul>
+                  <ul
+                    aria-label="Sélectionner un ustensile"
+                    class="collapse__container__choices"></ul>
+                </div>
               </div>
             </div>
             <p class="search-section__choices-line__recipes-counter">
@@ -104,6 +186,9 @@
         <section class="recipes-section"></section>
       </div>
     </main>
+    <script src="scripts/utils/recipesFilter.js"></script>
+    <script src="scripts/utils/recipesSorter.js"></script>
+    <script src="scripts/utils/collapse.js"></script>
     <script src="scripts/templates/recipeCard.js"></script>
     <script src="scripts/api/api.js"></script>
     <script src="scripts/pages/index.js"></script>
