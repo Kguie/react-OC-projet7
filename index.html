@@ -2,6 +2,7 @@
 <html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/icons/logo.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,6 +32,16 @@
           minlength="3"
           aria-label="Barre de recherche"
           placeholder="Rechercher une recette, un ingrédient, ..." />
+        <div
+          aria-label="Rechercher"
+          role="button"
+          class="google-container--hover">
+          <img
+            class="google-container__icon--hover"
+            aria-hidden="true"
+            alt=""
+            src="assets/icons/google-black.svg" />
+        </div>
         <div aria-label="Rechercher" role="button" class="google-container">
           <img
             class="google-container__icon"
@@ -38,8 +49,9 @@
             alt=""
             src="assets/icons/google-white.svg" />
         </div>
+
         <img
-          class="close-icon"
+          class="erase-icon"
           aria-hidden="true"
           src="assets/icons/close-grey.svg"
           alt="Effacer"
@@ -66,7 +78,7 @@
                   class="collapse__container"
                   id="ingredients-collapse-list"
                   aria-hidden="true">
-                  <div class="search-bar-container">
+                  <div class="collapse__search-bar-container">
                     <input
                       type="text"
                       id="ingredients-search-bar"
@@ -106,7 +118,7 @@
                   class="collapse__container"
                   id="appliances-collapse-list"
                   aria-hidden="true">
-                  <div class="search-bar-container">
+                  <div class="collapse__search-bar-container">
                     <input
                       type="text"
                       id="appliances-search-bar"
@@ -146,9 +158,9 @@
                 </button>
                 <div
                   class="collapse__container"
-                  id="ustensils-collapse-list"
+                  id="utensils-collapse-list"
                   aria-hidden="true">
-                  <div class="search-bar-container">
+                  <div class="collapse__search-bar-container">
                     <input
                       type="text"
                       id="utensils-search-bar"
@@ -186,6 +198,8 @@
         <section class="recipes-section"></section>
       </div>
     </main>
+    <script src="scripts/utils/utils.js"></script>
+    <script src="scripts/utils/listing.js"></script>
     <script src="scripts/utils/recipesFilter.js"></script>
     <script src="scripts/utils/recipesSorter.js"></script>
     <script src="scripts/utils/collapse.js"></script>

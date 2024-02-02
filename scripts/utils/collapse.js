@@ -4,7 +4,7 @@
 function handleCollapse(collapseNode) {
   const $collapseContainer = collapseNode.querySelector(".collapse__container");
   const $collapseButton = collapseNode.querySelector("button");
-  const $icon = document.querySelector(".collapse__icon");
+  const $icon = collapseNode.querySelector(".collapse__icon");
   const isOpen = collapseNode.querySelector(".collapse__container--open")
     ? true
     : false;
