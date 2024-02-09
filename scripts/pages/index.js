@@ -26,7 +26,7 @@ async function init() {
   const recipesFullList = await getRecipes();
   displayRecipes(recipesFullList);
   displayCollapses();
-  getAndDisplayChoicesLists(recipesFullList);
+  await handleLists(recipesFullList);
 
   //Ajout des event-listeners au niveau des inputs de recherche
   const $mainSearchBar = document.getElementById("search-bar");
