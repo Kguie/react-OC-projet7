@@ -1,4 +1,16 @@
 async function handleLists(recipes) {
+  clearCollapseInputs();
+
+  const $ingredientsSearchBarEraseButton = document
+    .getElementById("ingredients-collapse-list")
+    .querySelector(".erase-collapse");
+  const $appliancesSearchBarEraseButton = document
+    .getElementById("appliances-collapse-list")
+    .querySelector(".erase-collapse");
+  const $utensilsSearchBarEraseButton = document
+    .getElementById("utensils-collapse-list")
+    .querySelector(".erase-collapse");
+
   const $ingredientsChoicesList = document
     .getElementById("ingredients-collapse")
     .querySelector(".collapse__container__choices");
@@ -77,6 +89,46 @@ async function handleLists(recipes) {
     );
   });
 
+  //Ajout des event Listeners sur les inputs des collapses
+
+  addAdvancedSearchEvent(ingredientsList, "ingredient");
+  addAdvancedSearchEvent(appliancesList, "appliance");
+  addAdvancedSearchEvent(utensilsList, "utensil");
+
+  $ingredientsSearchBarEraseButton.onclick = () => {
+    document.getElementById("ingredients-search-bar").value = "";
+    $ingredientsSearchBarEraseButton.setAttribute("aria-hidden", "true");
+    $ingredientsSearchBarEraseButton.style.display = "none";
+    displayChoicesList(
+      $ingredientsChoicesList,
+      ingredientsList,
+      "availableItems",
+      "ingredient"
+    );
+  };
+  $appliancesSearchBarEraseButton.onclick = () => {
+    document.getElementById("appliances-search-bar").value = "";
+    $appliancesSearchBarEraseButton.setAttribute("aria-hidden", "true");
+    $appliancesSearchBarEraseButton.style.display = "none";
+    displayChoicesList(
+      $appliancesChoicesList,
+      appliancesList,
+      "availableItems",
+      "appliance"
+    );
+  };
+  $utensilsSearchBarEraseButton.onclick = () => {
+    document.getElementById("utensils-search-bar").value = "";
+    $utensilsSearchBarEraseButton.setAttribute("aria-hidden", "true");
+    $utensilsSearchBarEraseButton.style.display = "none";
+    displayChoicesList(
+      $utensilsChoicesList,
+      utensilsList,
+      "availableItems",
+      "utensil"
+    );
+  };
+
   //Affichage des listes
   displayChoicesList(
     $ingredientsChoicesList,
@@ -119,7 +171,7 @@ async function handleLists(recipes) {
 }
 
 /**
- * Affiche les listes de choix au niveau des accordions
+ * Affiche les listes de choix
  */
 function displayChoicesList($listNode, list, type, category) {
   //Nettoyage de la liste avant tout changement
@@ -187,7 +239,7 @@ function displayChoicesList($listNode, list, type, category) {
 }
 
 /**
- * Ajoute les fonctions au click sur les choix au niveau des accordions
+ * Ajoute les fonctions au click sur les choix
  */
 function addEventOnChoiceItem($itemNode, label, type, category) {
   if (type === "availableItems") {
@@ -201,4 +253,32 @@ function addEventOnChoiceItem($itemNode, label, type, category) {
       await handleSearch();
     };
   }
+}
+
+function clearCollapseInputs() {
+  document.getElementById("ingredients-search-bar").value = "";
+  document.getElementById("utensils-search-bar").value = "";
+  document.getElementById("appliances-search-bar").value = "";
+
+  document
+    .getElementById("ingredients-collapse-list")
+    .querySelector(".erase-collapse").display = "none";
+  document
+    .getElementById("ingredients-collapse-list")
+    .querySelector(".erase-collapse")
+    .setAttribute("aria-hidden", "true");
+  document
+    .getElementById("appliances-collapse-list")
+    .querySelector(".erase-collapse").display = "none";
+  document
+    .getElementById("appliances-collapse-list")
+    .querySelector(".erase-collapse")
+    .setAttribute("aria-hidden", "true");
+  document
+    .getElementById("utensils-collapse-list")
+    .querySelector(".erase-collapse").display = "none";
+  document
+    .getElementById("utensils-collapse-list")
+    .querySelector(".erase-collapse")
+    .setAttribute("aria-hidden", "true");
 }

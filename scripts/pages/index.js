@@ -51,30 +51,29 @@ async function init() {
     .getElementById("utensils-collapse-list")
     .querySelector(".erase-collapse");
 
-  $mainSearchBar.oninput = (e) => {
+  $mainSearchBar.addEventListener("input", (e) => {
     const text = e.target.value;
     handleEraseIcon(text, $mainSearchBarEraseButton);
-  };
+  });
 
-  $ingredientsSearchBar.oninput = (e) => {
+  addMainSearchEvent(recipesFullList);
+
+  $ingredientsSearchBar.addEventListener("input", (e) => {
     const text = e.target.value;
     handleEraseIcon(text, $ingredientsSearchBarEraseButton);
-  };
+  });
 
-  $appliancesSearchBar.oninput = (e) => {
+  $appliancesSearchBar.addEventListener("input", (e) => {
     const text = e.target.value;
     handleEraseIcon(text, $appliancesSearchBarEraseButton);
-  };
+  });
 
-  $utensilsSearchBar.oninput = (e) => {
+  $utensilsSearchBar.addEventListener("input", (e) => {
     const text = e.target.value;
     handleEraseIcon(text, $utensilsSearchBarEraseButton);
-  };
+  });
 
   addClearInput($mainSearchBar, $mainSearchBarEraseButton);
-  addClearInput($ingredientsSearchBar, $ingredientsSearchBarEraseButton);
-  addClearInput($appliancesSearchBar, $appliancesSearchBarEraseButton);
-  addClearInput($utensilsSearchBar, $utensilsSearchBarEraseButton);
 
   launchRecipesCount();
 }

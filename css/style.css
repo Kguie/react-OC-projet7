@@ -168,7 +168,7 @@ main {
     gap: 15px;
 }
 
-/* Accordions line */
+/* collapses line */
 .search-section__choices-line {
     display: flex;
     flex-direction: row;
@@ -188,13 +188,13 @@ main {
     max-width: 190px;
 }
 
-.search-section__choices-line__accordions-container {
+.search-section__choices-line__collapses-container {
     display: flex;
     flex-direction: row;
     gap: 65px;
 }
 
-.search-section__choices-line__accordions-container button {
+.search-section__choices-line__collapses-container button {
     display: flex;
     flex-direction: row;
     gap: 63px;
@@ -358,13 +358,13 @@ li {
         flex-direction: column-reverse;
     }
 
-    .search-section__choices-line__accordions-container {
+    .search-section__choices-line__collapses-container {
 
         flex-direction: column;
         gap: 5px;
     }
 
-    .search-section__choices-line__accordions-container button {
+    .search-section__choices-line__collapses-container button {
         width: 100%;
         justify-content: space-between;
     }
