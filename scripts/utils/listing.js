@@ -1,5 +1,4 @@
 async function handleLists(recipes) {
-  const recipesFullList = recipes ? recipes : await getRecipes(); //Remplacer ça par le choix entre la liste filtrée*
   const $ingredientsChoicesList = document
     .getElementById("ingredients-collapse")
     .querySelector(".collapse__container__choices");
@@ -48,7 +47,7 @@ async function handleLists(recipes) {
   const appliancesSet = new Set();
   const utensilsSet = new Set();
 
-  recipesFullList.forEach((recipe) => {
+  recipes.forEach((recipe) => {
     recipe.ingredients.forEach((ingredient) => {
       ingredientsSet.add(ingredient.ingredient);
     });
@@ -194,12 +193,12 @@ function addEventOnChoiceItem($itemNode, label, type, category) {
   if (type === "availableItems") {
     $itemNode.onclick = async () => {
       addKeyToRecipesSearchArray({ [category]: label });
-      await handleLists();
+      await handleSearch();
     };
   } else {
     $itemNode.onclick = async () => {
       removeKeyFromRecipesSearchArray({ [category]: label });
-      await handleLists();
+      await handleSearch();
     };
   }
 }

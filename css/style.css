@@ -438,7 +438,7 @@ li {
     }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1150px) {
     .recipes-section {
         display: grid;
         grid-template-columns: repeat(3, 380px);

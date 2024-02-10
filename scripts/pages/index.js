@@ -1,5 +1,7 @@
 function displayRecipes(recipesList) {
   const $recipesContainer = document.querySelector(".recipes-section");
+  //Nettoyage du container
+  $recipesContainer.innerHTML = "";
   recipesList.forEach((recipe) => {
     $recipesContainer.appendChild(getRecipeCardDom(recipe));
   });
@@ -73,6 +75,8 @@ async function init() {
   addClearInput($ingredientsSearchBar, $ingredientsSearchBarEraseButton);
   addClearInput($appliancesSearchBar, $appliancesSearchBarEraseButton);
   addClearInput($utensilsSearchBar, $utensilsSearchBarEraseButton);
+
+  launchRecipesCount();
 }
 
 init();
