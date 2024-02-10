@@ -49,3 +49,9 @@ function removeKeyFromRecipesSearchArray(key) {
     localStorage.setItem("recipesSearchArray", JSON.stringify(searchArray));
   }
 }
+/**
+ * Réinitialise la liste de recherche
+ */
+function resetSearchArray() {
+  localStorage.removeItem("recipesSearchArray");
+}

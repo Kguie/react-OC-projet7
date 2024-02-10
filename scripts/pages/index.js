@@ -25,6 +25,9 @@ function displayCollapses() {
 }
 
 async function init() {
+  //Réinitialisation des recherches
+  resetSearchArray();
+
   const recipesFullList = await getRecipes();
   displayRecipes(recipesFullList);
   displayCollapses();

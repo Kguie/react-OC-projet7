@@ -43,7 +43,7 @@ function addMainSearchEvent(recipes) {
   }
 
   $mainSearchBarButton.onclick = () => research();
-  document.getElementById("search-bar").onKeyDown = (event) => {
+  document.getElementById("search-bar").onkeydown = (event) => {
     const key = event.key;
     if (key === "Enter") {
       research();

@@ -25,6 +25,9 @@ function launchRecipesCount() {
   }`;
 }
 
+/**
+ * Principale fonction de recherche
+ */
 function filterRecipes(searchElement, recipes) {
   const key = Object.keys(searchElement)[0];
   const value = Object.values(searchElement)[0].toLowerCase();
