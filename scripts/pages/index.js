@@ -76,7 +76,7 @@ async function init() {
     handleEraseIcon(text, $utensilsSearchBarEraseButton);
   });
 
-  addClearInput($mainSearchBar, $mainSearchBarEraseButton);
+  addClearInput($mainSearchBar, $mainSearchBarEraseButton, recipesFullList);
 
   launchRecipesCount();
 }

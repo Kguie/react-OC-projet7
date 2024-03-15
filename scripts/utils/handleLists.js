@@ -50,17 +50,11 @@ async function handleLists(recipes) {
     chosenList
       .filter((obj) => obj.hasOwnProperty("utensil"))
       .map((obj) => obj.utensil) || [];
-
   // const chosenMainList =
   //   chosenList
   //     .filter((obj) => obj.hasOwnProperty("main"))
   //     .map((obj) => obj.main) || [];
-
-  const chosenMainList = [
-    ...chosenUtensilsList,
-    ...chosenAppliancesList,
-    ...chosenIngredientsList,
-  ];
+  const chosenMainList = [];
 
   const ingredientsSet = new Set();
   const appliancesSet = new Set();
@@ -97,7 +91,6 @@ async function handleLists(recipes) {
   });
 
   //Ajout des event Listeners sur les inputs des collapses
-
   addAdvancedSearchEvent(ingredientsList, "ingredient");
   addAdvancedSearchEvent(appliancesList, "appliance");
   addAdvancedSearchEvent(utensilsList, "utensil");
@@ -175,135 +168,4 @@ async function handleLists(recipes) {
   );
 
   displayChoicesList($mainChosenList, chosenMainList, "selectedItems", "main");
-}
-
-/**
- * Affiche les listes de choix
- */
-function displayChoicesList($listNode, list, type, category) {
-  //Nettoyage de la liste avant tout changement
-  $listNode.innerHTML = "";
-  if (type === "availableItems") {
-    list.forEach((element) => {
-      const $choiceItem = document.createElement("li");
-      addEventOnChoiceItem($choiceItem, element, type, category);
-      $choiceItem.classList.add("collapse__container__choices__item");
-      $choiceItem.textContent = element;
-      $listNode.appendChild($choiceItem);
-    });
-  } else {
-    if (!list.length) {
-      $listNode.style.display = "none";
-      return;
-    }
-    $listNode.style.display = "flex";
-    //Trouver solution ici
-    if (category === "main") {
-      list.forEach((element) => {
-        const $choiceItem = document.createElement("div");
-        addEventOnChoiceItem($choiceItem, element, type, category);
-        $choiceItem.classList.add("search-section__selected-items-line__item");
-
-        const $labelWrapper = document.createElement("div");
-        $labelWrapper.classList.add(
-          "search-section__selected-items-line__item__label"
-        );
-        const $label = document.createElement("p");
-        $label.textContent = element;
-
-        const $eraseButton = document.createElement("img");
-        $eraseButton.alt = "Enlever le choix";
-        $eraseButton.src = "../../assets/icons/close-black.svg";
-
-        $labelWrapper.appendChild($label);
-        $labelWrapper.appendChild($eraseButton);
-        $choiceItem.appendChild($labelWrapper);
-        $listNode.appendChild($choiceItem);
-      });
-      return;
-    }
-    list.forEach((element) => {
-      const $choiceItem = document.createElement("li");
-      addEventOnChoiceItem($choiceItem, element, type, category);
-      $choiceItem.classList.add("collapse__container__chosen-items__item");
-
-      const $label = document.createElement("p");
-      $label.classList.add("collapse__container__chosen-items__item__label");
-      $label.textContent = element;
-
-      const $eraseButton = document.createElement("img");
-      $eraseButton.classList.add(
-        "collapse__container__chosen-items__item__erase-button"
-      );
-      $eraseButton.alt = "Enlever le choix";
-      $eraseButton.src = "../../assets/icons/circle-close.svg";
-
-      $label.appendChild($eraseButton);
-      $choiceItem.appendChild($label);
-
-      $listNode.appendChild($choiceItem);
-    });
-  }
-}
-
-/**
- * Ajoute les fonctions au click sur les choix
- */
-function addEventOnChoiceItem($itemNode, label, type, category) {
-  if (category === "main") {
-    const searchArray = getRecipesSearchArray();
-    const mainObject = searchArray?.find((object) => {
-      const value = Object.values(object)[0].toLowerCase();
-      if (value.includes(label.toLowerCase())) {
-        return true;
-      }
-    });
-    if (mainObject) {
-      const mainObjectCategory = Object.keys(mainObject)[0].toLowerCase();
-      $itemNode.onclick = async () => {
-        removeKeyFromRecipesSearchArray({ [mainObjectCategory]: label });
-        await handleSearch();
-      };
-    }
-    return;
-  }
-  if (type === "availableItems") {
-    $itemNode.onclick = async () => {
-      addKeyToRecipesSearchArray({ [category]: label });
-      await handleSearch();
-    };
-  } else {
-    $itemNode.onclick = async () => {
-      removeKeyFromRecipesSearchArray({ [category]: label });
-      await handleSearch();
-    };
-  }
-}
-
-function clearCollapseInputs() {
-  document.getElementById("ingredients-search-bar").value = "";
-  document.getElementById("utensils-search-bar").value = "";
-  document.getElementById("appliances-search-bar").value = "";
-
-  document
-    .getElementById("ingredients-collapse-list")
-    .querySelector(".erase-collapse").display = "none";
-  document
-    .getElementById("ingredients-collapse-list")
-    .querySelector(".erase-collapse")
-    .setAttribute("aria-hidden", "true");
-  document
-    .getElementById("appliances-collapse-list")
-    .querySelector(".erase-collapse").display = "none";
-  document
-    .getElementById("appliances-collapse-list")
-    .querySelector(".erase-collapse")
-    .setAttribute("aria-hidden", "true");
-  document
-    .getElementById("utensils-collapse-list")
-    .querySelector(".erase-collapse").display = "none";
-  document
-    .getElementById("utensils-collapse-list")
-    .querySelector(".erase-collapse")
-    .setAttribute("aria-hidden", "true");
 }

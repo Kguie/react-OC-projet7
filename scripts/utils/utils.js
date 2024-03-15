@@ -1,9 +1,16 @@
-function addClearInput(inputNode, eraseNode) {
+function addClearInput(inputNode, eraseNode, recipes) {
   eraseNode.onclick = (e) => {
+    const searchArray = getRecipesSearchArray();
+    const mainObject = searchArray?.find((searchObject) => searchObject.main);
+    if (mainObject) {
+      removeKeyFromRecipesSearchArray(mainObject);
+      handleSearch(recipes);
+    }
     inputNode.value = "";
     eraseNode.style.display = "none";
   };
 }
+
 /**
  * Gère l'apparition et la disparition de l’icône d'effacement
  */
@@ -26,6 +33,10 @@ function addMainSearchEvent(recipes) {
   function research() {
     const $mainSearchBar = document.getElementById("search-bar");
 
+    //Vérifie que l'objet de recherche main est présent
+    const searchArray = getRecipesSearchArray();
+    const mainObject = searchArray?.find((searchObject) => searchObject.main);
+
     if (
       !$mainSearchBar.value ||
       ($mainSearchBar.value &&
@@ -33,30 +44,41 @@ function addMainSearchEvent(recipes) {
           $mainSearchBar.value.length > 50)) ||
       !regex.test($mainSearchBar.value)
     ) {
+      if (mainObject) {
+        removeKeyFromRecipesSearchArray(mainObject);
+        handleSearch(recipes);
+      }
       return;
     }
+    if (mainObject) {
+      removeKeyFromRecipesSearchArray(mainObject);
+    }
+    //Ajouter ici la fonction pour qu'il n'y ai qu'un seul objet main
     addKeyToRecipesSearchArray({ main: $mainSearchBar.value });
-    $mainSearchBar.value = "";
-    $mainSearchBarEraseButton.setAttribute("aria-hidden", true);
-    $mainSearchBarEraseButton.style.display = "none";
+    // $mainSearchBar.value = "";
+    // $mainSearchBarEraseButton.setAttribute("aria-hidden", true);
+    // $mainSearchBarEraseButton.style.display = "none";
     handleSearch(recipes);
   }
 
-  $mainSearchBarButton.onclick = () => research();
-  document.getElementById("search-bar").onkeydown = (event) => {
-    const key = event.key;
-    if (key === "Enter") {
-      research();
-      return;
-    }
-  };
+  // $mainSearchBarButton.onclick = () => research();
+  // document.getElementById("search-bar").onkeydown = (event) => {
+  //   const key = event.key;
+  //   if (key === "Enter") {
+  //     research();
+  //     return;
+  //   }
+  // };
 
+  //Gère la recherche à l'input
   document.getElementById("search-bar").oninput = (event) => {
     if (!regex.test(event.data)) {
       document.getElementById("search-bar").value = event.target.value.slice(
         0,
         event.target.value.length - 1
       );
+    } else {
+      research();
     }
   };
 }
