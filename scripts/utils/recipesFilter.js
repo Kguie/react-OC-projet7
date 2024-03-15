@@ -47,28 +47,40 @@ function displayNoRecipesFounded(recipeList, searchList) {
 function filterRecipes(searchElement, recipes) {
   const key = Object.keys(searchElement)[0];
   const value = Object.values(searchElement)[0].toLowerCase();
-  if (key === "main") {
-    return recipes.filter(
-      (recipe) =>
-        recipe.name.toLowerCase().includes(value) ||
-        recipe.description.toLowerCase().includes(value) ||
-        recipe.ingredients.some((ingredient) =>
+  let foundRecipes = [];
+  for (let i = 0; i < recipes.length; i++) {
+    if (key === "main") {
+      if (
+        recipes[i].name.toLowerCase().includes(value) ||
+        recipes[i].description.toLowerCase().includes(value) ||
+        recipes[i].ingredients.some((ingredient) =>
           ingredient.ingredient.toLowerCase().includes(value)
         )
-    );
-  } else if (key === "ingredient") {
-    return recipes.filter((recipe) =>
-      recipe.ingredients.some((ingredient) =>
-        ingredient.ingredient.toLowerCase().includes(value)
-      )
-    );
-  } else if (key === "appliance") {
-    return recipes.filter((recipe) =>
-      recipe.appliance?.toLowerCase().includes(value)
-    );
-  } else if (key === "utensil") {
-    return recipes.filter((recipe) =>
-      recipe.utensils.some((utensil) => utensil.toLowerCase().includes(value))
-    );
+      ) {
+        foundRecipes.push(recipes[i]);
+      }
+    } else if (key === "ingredient") {
+      if (
+        recipes[i].ingredients.some((ingredient) =>
+          ingredient.ingredient.toLowerCase().includes(value)
+        )
+      ) {
+        foundRecipes.push(recipes[i]);
+      }
+    } else if (key === "appliance") {
+      if (recipes[i].appliance.toLowerCase().includes(value)) {
+        foundRecipes.push(recipes[i]);
+      }
+    } else if (key === "utensil") {
+      if (
+        recipes[i].utensils.some((utensil) =>
+          utensil.toLowerCase().includes(value)
+        )
+      ) {
+        foundRecipes.push(recipes[i]);
+      }
+    }
   }
+
+  return foundRecipes;
 }
