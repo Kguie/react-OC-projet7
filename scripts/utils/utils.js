@@ -23,11 +23,6 @@ function handleEraseIcon(text, eraseNode) {
 }
 
 function addMainSearchEvent(recipes) {
-  const $mainSearchBarButton = document.querySelector(
-    ".google-container--hover"
-  );
-  const $mainSearchBarEraseButton = document.querySelector(".erase-icon");
-
   const regex = /^[a-zA-ZÀ-ÿ\s',]+$/;
 
   function research() {
@@ -53,22 +48,11 @@ function addMainSearchEvent(recipes) {
     if (mainObject) {
       removeKeyFromRecipesSearchArray(mainObject);
     }
-    //Ajouter ici la fonction pour qu'il n'y ai qu'un seul objet main
+
     addKeyToRecipesSearchArray({ main: $mainSearchBar.value });
-    // $mainSearchBar.value = "";
-    // $mainSearchBarEraseButton.setAttribute("aria-hidden", true);
-    // $mainSearchBarEraseButton.style.display = "none";
+
     handleSearch(recipes);
   }
-
-  // $mainSearchBarButton.onclick = () => research();
-  // document.getElementById("search-bar").onkeydown = (event) => {
-  //   const key = event.key;
-  //   if (key === "Enter") {
-  //     research();
-  //     return;
-  //   }
-  // };
 
   //Gère la recherche à l'input
   document.getElementById("search-bar").oninput = (event) => {
