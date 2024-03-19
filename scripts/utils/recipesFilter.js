@@ -23,7 +23,7 @@ function launchRecipesCount(recipeList, searchList) {
   $counter.textContent = `${recipeList?.length || 0} recette${
     (recipeList?.length || 0) > 1 ? "s" : ""
   }`;
-  displayNoRecipesFounded(recipeList, searchList);
+  displayNoRecipesFounded(recipeList, searchList || []);
 }
 
 function displayNoRecipesFounded(recipeList, searchList) {
