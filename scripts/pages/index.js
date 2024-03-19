@@ -78,7 +78,7 @@ async function init() {
 
   addClearInput($mainSearchBar, $mainSearchBarEraseButton, recipesFullList);
 
-  launchRecipesCount();
+  launchRecipesCount(recipesFullList, []);
 }
 
 init();
