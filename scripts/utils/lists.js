@@ -304,25 +304,9 @@ function clearCollapseInputs() {
   document.getElementById("utensils-search-bar").value = "";
   document.getElementById("appliances-search-bar").value = "";
 
-  document
-    .getElementById("ingredients-collapse-list")
-    .querySelector(".erase-collapse").display = "none";
-  document
-    .getElementById("ingredients-collapse-list")
-    .querySelector(".erase-collapse")
-    .setAttribute("aria-hidden", "true");
-  document
-    .getElementById("appliances-collapse-list")
-    .querySelector(".erase-collapse").display = "none";
-  document
-    .getElementById("appliances-collapse-list")
-    .querySelector(".erase-collapse")
-    .setAttribute("aria-hidden", "true");
-  document
-    .getElementById("utensils-collapse-list")
-    .querySelector(".erase-collapse").display = "none";
-  document
-    .getElementById("utensils-collapse-list")
-    .querySelector(".erase-collapse")
-    .setAttribute("aria-hidden", "true");
+  const $eraseIcons = document.querySelectorAll(".erase-collapse");
+  $eraseIcons.forEach(($eraseIcon) => {
+    $eraseIcon.style.display = "none";
+    $eraseIcon.setAttribute("aria-hidden", "true");
+  });
 }
