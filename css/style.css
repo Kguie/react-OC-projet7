@@ -319,9 +319,11 @@ main {
     display: flex;
     justify-content: space-around;
     background-color: #FFD15B;
+    text-transform: none;
 }
 
 .collapse__container__choices__item {
+    text-transform: none;
     width: 85%;
     overflow: hidden;
     white-space: nowrap;
@@ -415,7 +417,7 @@ li {
     justify-content: space-between;
     padding-bottom: 5px;
     align-items: center;
-    text-transform: capitalize;
+    text-transform: none;
 }
 
 /* Affichage des cartes recettes */

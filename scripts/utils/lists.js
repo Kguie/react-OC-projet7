@@ -56,11 +56,21 @@ async function handleLists(recipes) {
   //     .filter((obj) => obj.hasOwnProperty("main"))
   //     .map((obj) => obj.main) || [];
 
-  const chosenMainList = [
+  const tagList = [
     ...chosenUtensilsList,
     ...chosenAppliancesList,
     ...chosenIngredientsList,
   ];
+
+  function capitalizeFirstLetterOfSentence(text) {
+    const sentence = text.split(" ");
+
+    for (let i = 0; i < sentence.length; i++) {
+      sentence[0] = sentence[0][0].toUpperCase() + sentence[0].slice(1);
+    }
+
+    return sentence.join(" ");
+  }
 
   const ingredientsSet = new Set();
   const appliancesSet = new Set();
@@ -68,12 +78,21 @@ async function handleLists(recipes) {
 
   recipes.forEach((recipe) => {
     recipe.ingredients.forEach((ingredient) => {
-      ingredientsSet.add(ingredient.ingredient);
+      ingredientsSet.add(
+        capitalizeFirstLetterOfSentence(
+          ingredient.ingredient.trim().toLowerCase()
+        )
+      );
     });
     recipe.utensils.forEach((utensil) => {
-      utensilsSet.add(utensil);
+      utensilsSet.add(
+        capitalizeFirstLetterOfSentence(utensil.trim().toLowerCase())
+      );
     });
-    recipe.appliance && appliancesSet.add(recipe.appliance);
+    recipe.appliance &&
+      appliancesSet.add(
+        capitalizeFirstLetterOfSentence(recipe.appliance.trim().toLowerCase())
+      );
   });
 
   //Filtrage des listes en fonction des ingrédients déjà choisi
@@ -174,7 +193,7 @@ async function handleLists(recipes) {
     "utensil"
   );
 
-  displayChoicesList($mainChosenList, chosenMainList, "selectedItems", "main");
+  displayChoicesList($mainChosenList, tagList, "selectedItems", "main");
 }
 
 /**
